@@ -7,7 +7,7 @@ require './config/environments' #database configuration
 require './models/video' #Model class
 
 use Rack::Auth::Basic, "Restricted Area" do |username, password|
-  username == 'mancity' and password == 'admin'
+  username == 'mancity' and password == 'beautifulfootball'
 end
 
 helpers do
@@ -19,7 +19,7 @@ helpers do
 
   def authorized?
     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['mancity', 'admin']
+    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['mancity', 'beautifulfootball']
   end
 end
 
