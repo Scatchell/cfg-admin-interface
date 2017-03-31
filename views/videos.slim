@@ -2,11 +2,12 @@
   .col-md-8
     h1 All uploaded videos
 
-    ul
-      - videos.each do |video|
-        li
-          '#{video.name}
-          a.btn.btn-default href='#{video.public_url}' role="button" Watch video
+    .videos-to-watch
+      ul
+        - videos.each do |video|
+          li
+            '#{video.name}
+            a.btn.btn-default href='#{video.public_url}' role="button" Watch video
 
 .row
   .col-md-8

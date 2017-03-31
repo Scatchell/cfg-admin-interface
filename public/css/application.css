@@ -1,6 +1,6 @@
 .backgroundimage {
     background: url("../img/football_field.jpg") no-repeat left center fixed;
-    background-size:cover;
+    background-size: cover;
     background-color: #98C5E9;
     width: 100%;
 }
@@ -16,11 +16,12 @@
     color: #00285E;
 }
 
-@media only screen and (min-width : 800px) {
+@media only screen and (min-width: 800px) {
     .mcfc_logo {
         margin-top: 20px;
         font-size: 45px;
     }
+
     .icon-mcfc_logo {
         max-height: 75px;
     }
@@ -29,4 +30,11 @@
 
 .mcfc_logo span {
     padding-left: 20px;
+}
+
+.videos-to-watch {
+    background-color:rgba(255, 255, 255, 0.5);
+    padding: 1.5%;
+    border: 2px solid gainsboro;
+    margin-bottom: 1.5%;
 }
