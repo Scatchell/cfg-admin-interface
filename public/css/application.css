@@ -17,11 +17,6 @@
 }
 
 @media only screen and (min-width : 800px) {
-    .container {
-        padding-left: 70px;
-        padding-top: 30px;
-    }
-
     .mcfc_logo {
         margin-top: 20px;
         font-size: 45px;
