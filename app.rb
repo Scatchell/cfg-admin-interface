@@ -6,7 +6,27 @@ require 'bootstrap-sass'
 require './config/environments' #database configuration
 require './models/video' #Model class
 
+use Rack::Auth::Basic, "Restricted Area" do |username, password|
+  username == 'mancity' and password == 'admin'
+end
+
+helpers do
+  def protected!
+    return if authorized?
+    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    halt 401, "Not authorized\n"
+  end
+
+  def authorized?
+    @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['mancity', 'admin']
+  end
+end
+
+
 get '/' do
+  protected!
+
   @videos = []
   s3 = Aws::S3::Resource.new(region: 'eu-west-2', access_key_id: ENV['ACCESS_KEY_ID'], secret_access_key: ENV['SECRET_ACCESS_KEY'])
 
