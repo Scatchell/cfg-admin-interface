@@ -1,10 +1,13 @@
 .row
-  h1 All videos
+  .col
+    h1 All uploaded videos
 
-  ul
-    - videos.each do |video|
-      li
-        a href='#{video.public_url}' #{video.name}
+    ul
+      - videos.each do |video|
+        li
+          '#{video.name}
+          a.btn.btn-default href='#{video.public_url}' role="button" Watch video
 
 .row
-  a href="/" Back to Home
+  .col
+    a href="/" Back to Home

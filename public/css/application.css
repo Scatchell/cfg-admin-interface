@@ -1,3 +1,36 @@
-body {
+.backgroundimage {
+    background: url("../img/football_field.jpg") no-repeat left center fixed;
+    background-size:cover;
     background-color: #98C5E9;
+    width: 100%;
+}
+
+.container {
+    margin-left: 10px;
+}
+
+.icon-mcfc_logo {
+    max-height: 55px;
+}
+
+.mcfc_logo {
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #00285E;
+}
+
+@media only screen and (min-width : 600px) {
+    .mcfc_logo {
+        margin-top: 20px;
+        font-size: 45px;
+    }
+    .icon-mcfc_logo {
+        max-height: 75px;
+    }
+
+}
+
+.mcfc_logo span {
+    padding-left: 20px;
 }
