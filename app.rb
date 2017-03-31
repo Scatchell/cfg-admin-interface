@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'aws-sdk'
+require 'slim'
+require 'bootstrap-sass'
 require './config/environments' #database configuration
 require './models/video' #Model class
 
@@ -16,6 +18,6 @@ get '/' do
     end
   end
 
-  erb :videos
+  slim(:videos, :layout => true, :locals => {videos: @videos})
 
 end

@@ -1,0 +1,10 @@
+.row
+  h1 All videos
+
+  ul
+    - videos.each do |video|
+      li
+        a href='#{video.public_url}' #{video.name}
+
+.row
+  a href="/" Back to Home
