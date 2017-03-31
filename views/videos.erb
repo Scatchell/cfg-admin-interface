@@ -1,0 +1,9 @@
+<h3>All Videos</h3>
+<ul>
+	<% @videos.each do |video| %>
+		<li>
+			<a href="<%= video.public_url %>"><%= video.name %></a>
+		</li>
+	<% end %>
+</ul>
+<a href="/">Back to Home</a>

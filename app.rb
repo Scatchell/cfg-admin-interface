@@ -1,28 +1,21 @@
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'aws-sdk'
 require './config/environments' #database configuration
-require './models/model'        #Model class
+require './models/video' #Model class
 
 get '/' do
-  erb :index
-end
+  @videos = []
+  s3 = Aws::S3::Resource.new(region: 'eu-west-2', access_key_id: ENV['ACCESS_KEY_ID'], secret_access_key: ENV['SECRET_ACCESS_KEY'])
 
-post '/submit' do
-  postedModel = JSON.parse(request.body.read)
-  @model = Model.new(postedModel)
-  if @model.save
-	redirect '/models'
-  else
-	"Sorry, there was an error!"
+  bucket = s3.bucket('cfg-videos')
+  bucket.objects.limit(50).each do |obj|
+
+    unless obj.key.start_with?('cfg-videos2017-0')
+      @videos << Video.new(obj.key, obj.public_url)
+    end
   end
-end
 
-get '/models' do
-  @models = Model.all
-  erb :models
-end
+  erb :videos
 
-get '/model/last' do
-  content_type :json
-  Model.last.to_json
 end
